@@ -1,0 +1,74 @@
+﻿@model mvcproject.Models.JobSearch
+
+@{
+    ViewBag.Title = "JobList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Job Search</h2>
+<div>
+    @using (Html.BeginForm("Searchjob_click", "job", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td style="padding-left:8px;"> <label>Skills:</label></td>
+                <td> @Html.TextBoxFor(m => m.insertse.skills)</td>
+
+                <td style="padding-left:8px;"> <label>Experience:</label></td>
+                <td> @Html.TextBoxFor(m => m.insertse.experience)</td>
+                <td style="padding-left:8px;"> <label>Location:</label></td>
+                <td> @Html.TextBoxFor(m => m.insertse.location)</td>
+
+                <td><input type="submit" value="search" /></td>
+            </tr>
+        </table>
+    }
+</div>
+
+<div>
+    @using (Html.BeginForm("searchjob_Pageload", "SearchJob", FormMethod.Get))
+    {
+        if (Model != null && Model.selectjob != null && Model.selectjob.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Company ID</th>
+                        <th>Skills</th>
+                        <th>Experience</th>
+                        <th>Job Status</th>
+                        <th>Location</th>
+                        <th>Last Date</th>
+                        <th>Apply</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var job in Model.selectjob)
+                    {
+                        <tr>
+                            <td>@job.comp_id</td>
+                            <td>@job.skills</td>
+                            <td>@job.experience</td>
+                            <td>@job.job_status</td>
+                            <td>@job.location</td>
+                            <td>@job.end_date</td>
+                            <td>
+                                @Html.ActionLink("Apply Now", "ApplyCV_Load", "ApplyCv",
+                                    new { cid = job.comp_id, jid = job.job_id }, null)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <script>
+                alert('No data found');
+            </script>
+        }
+    }
+</div>
+
+<a href="@Url.Action("UserHome", "Login")">Go to UserHome</a>
+

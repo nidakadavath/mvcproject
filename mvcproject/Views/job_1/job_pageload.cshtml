@@ -1,0 +1,67 @@
+﻿@model IEnumerable<mvcproject.Models.job_1>
+@{
+    ViewBag.Title = "Job Listings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="mb-3">Job Listings</h2>
+
+<p>
+    @Html.ActionLink("Create New Job", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th>Job Title</th>
+                <th>Description</th>
+                <th>Salary</th>
+                <th>Location</th>
+                <th>Experience</th>
+                <th>Skills</th>
+                <th>Job Type</th>
+                <th>Status</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.job_title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.job_description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.salary)</td>
+                    <td>@Html.DisplayFor(modelItem => item.location)</td>
+                    <td>@Html.DisplayFor(modelItem => item.experience)</td>
+                    <td>@Html.DisplayFor(modelItem => item.skills)</td>
+                    <td>@Html.DisplayFor(modelItem => item.job_type)</td>
+                    <td>@Html.DisplayFor(modelItem => item.job_status)</td>
+                    <td>@Html.DisplayFor(modelItem => item.start_date)</td>
+                    <td>@Html.DisplayFor(modelItem => item.end_date)</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = item.job_id })" class="btn btn-warning btn-sm">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+                        <a href="@Url.Action("Details", new { id = item.job_id })" class="btn btn-info btn-sm">
+                            <i class="fas fa-info-circle"></i> Details
+                        </a>
+                        <a href="@Url.Action("Delete", new { id = item.job_id })" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        No jobs available.
+    </div>
+}
+

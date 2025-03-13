@@ -1,0 +1,124 @@
+﻿@model mvcproject.Models.userReg
+@{
+    ViewBag.Title = "user_pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Insert</h2>
+<div>
+    @using (Html.BeginForm("Insert_click", "userInsert", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+    {
+        <label>Name:</label>
+        <div>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+
+        <div>
+            <label>Age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.age)
+            @Html.ValidationMessageFor(m => m.age)
+        </div>
+
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+        <div>
+            <label>Phone:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.phone)
+            @Html.ValidationMessageFor(m => m.phone)
+        </div>
+
+        <div>
+
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+        <div>
+            Male
+            @Html.RadioButtonFor(m => m.gen, "Male")
+            Female
+            @Html.RadioButtonFor(m => m.gen, "Female")
+
+
+        </div>
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.qualification)
+            @Html.ValidationMessageFor(m => m.qualification)
+        </div>
+        <div>
+
+            <label>Experience(In years):</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.exp)
+            @Html.ValidationMessageFor(m => m.exp)
+        </div>
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.skills)
+            @Html.ValidationMessageFor(m => m.skills)
+        </div>
+        <label>Resume:</label>
+        <div>
+            @Html.TextBox("file1", "", new { Type = "file" })
+        </div>
+
+        <label>Photo:</label>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <label>current location:</label>
+        <div>
+            @Html.TextAreaFor(m => m.locat)
+            @Html.ValidationMessageFor(m => m.locat)
+        </div>
+
+        <label>User Name:</label>
+        <div>
+            @Html.TextBoxFor(m => m.username)
+            @Html.ValidationMessageFor(m => m.username)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.pass)
+        </div>
+
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.cpassword)
+            @Html.ValidationMessageFor(m => m.cpassword)
+        </div>
+
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.usermsg)
+        </div>
+
+
+    }
+</div>
+
+

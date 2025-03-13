@@ -1,0 +1,53 @@
+﻿@model mvcproject.Models.job_1
+
+@{
+    ViewBag.Title = "Job Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center text-primary mt-4">Job Details</h2>
+
+<div class="container mt-4">
+    <div class="card shadow-lg p-4">
+        <h4 class="text-secondary">Job Information</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4 fw-bold">Company ID</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.comp_id)</dd>
+
+            <dt class="col-sm-4 fw-bold">Job Title</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.job_title)</dd>
+
+            <dt class="col-sm-4 fw-bold">Job Description</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.job_description)</dd>
+
+            <dt class="col-sm-4 fw-bold">Salary</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.salary)</dd>
+
+            <dt class="col-sm-4 fw-bold">Location</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.location)</dd>
+
+            <dt class="col-sm-4 fw-bold">Experience Required</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.experience)</dd>
+
+            <dt class="col-sm-4 fw-bold">Required Skills</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.skills)</dd>
+
+            <dt class="col-sm-4 fw-bold">Job Type</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.job_type)</dd>
+
+            <dt class="col-sm-4 fw-bold">Job Status</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.job_status)</dd>
+
+            <dt class="col-sm-4 fw-bold">Start Date</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.start_date)</dd>
+
+            <dt class="col-sm-4 fw-bold">End Date</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.end_date)</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="text-center mt-4">
+    @Html.ActionLink("Edit", "Edit", new { id = Model.job_id }, new { @class = "btn btn-warning mx-2" })
+

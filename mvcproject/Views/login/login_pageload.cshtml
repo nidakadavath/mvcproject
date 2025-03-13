@@ -1,0 +1,77 @@
+﻿@model mvcproject.Models.login
+@{
+    ViewBag.Title = "Login Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background: linear-gradient(135deg, #3498db, #8e44ad);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 350px;
+        padding: 20px;
+        background: transparent;
+        text-align: center;
+    }
+
+    h2 {
+        color: white;
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: none;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #3498db;
+        border: none;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+    .text-danger {
+        color: red;
+        font-size: 14px;
+    }
+</style>
+
+<div class="login-container">
+    <h2>Login</h2>
+
+    @using (Html.BeginForm("Login_Click", "login", FormMethod.Get))
+    {
+        <label class="form-label text-white">User Name:</label>
+        @Html.TextBoxFor(m => m.Uname, new { @class = "form-control", placeholder = "Enter your username" })
+        @Html.ValidationMessageFor(m => m.Uname, "", new { @class = "text-danger" })
+
+        <label class="form-label text-white">Password:</label>
+        @Html.PasswordFor(m => m.password, new { @class = "form-control", placeholder = "Enter your password" })
+        @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+
+        <input type="submit" value="Login" class="btn-primary" />
+
+        <div class="text-danger mt-2">
+            @Html.DisplayFor(m => m.msg)
+        </div>
+    }
+</div>

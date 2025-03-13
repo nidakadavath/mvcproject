@@ -1,0 +1,106 @@
+﻿@model mvcproject.Models.job_1
+
+@{
+    ViewBag.Title = "Create Job";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create Job</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Job Details</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.job_title, "Job Title", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.job_title, new { @class = "form-control", placeholder = "Enter job title" })
+                @Html.ValidationMessageFor(model => model.job_title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.job_description, "Job Description", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.job_description, new { @class = "form-control", rows = 3, placeholder = "Enter job description" })
+                @Html.ValidationMessageFor(model => model.job_description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.salary, "Salary", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.salary, new { @class = "form-control", placeholder = "Enter salary" })
+                @Html.ValidationMessageFor(model => model.salary, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.location, "Location", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.location, new { @class = "form-control", placeholder = "Enter location" })
+                @Html.ValidationMessageFor(model => model.location, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.experience, "Experience (Years)", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.experience, new { @class = "form-control", placeholder = "Enter required experience" })
+                @Html.ValidationMessageFor(model => model.experience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.skills, "Required Skills", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.skills, new { @class = "form-control", placeholder = "Enter required skills" })
+                @Html.ValidationMessageFor(model => model.skills, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.job_type, "Job Type", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.job_type, new SelectList(new[] { "Full-Time", "Part-Time", "Internship", "Contract" }), "Select job type", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.job_type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.job_status, "Job Status", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.job_status, new SelectList(new[] { "Open", "Closed", "Paused" }), "Select job status", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.job_status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.start_date, "Start Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.start_date, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.start_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.end_date, "End Date", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.end_date, new { @class = "form-control", type = "date" })
+                @Html.ValidationMessageFor(model => model.end_date, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Create Job</button>
+                <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,23 @@
+﻿@model mvcproject.Models.insertcv
+@{
+    ViewBag.Title = "ApplyCV_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apply for Job</h2>
+
+@if (!string.IsNullOrEmpty(Model?.appmsg))
+{
+<div class="alert alert-success">
+    @Model.appmsg
+</div>}
+
+@using (Html.BeginForm("Insert_click", "ApplyCv", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="form-group">
+    <label for="resume">Upload Resume</label>
+    <input type="file" name="file" class="form-control" required />
+</div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>}
+

@@ -1,0 +1,69 @@
+﻿@model mvcproject.Models.comp
+@{
+    ViewBag.Title = "compageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center text-primary">Insert Company Details</h2>
+    <div class="card shadow p-4">
+        @using (Html.BeginForm("Insert_click", "AdminReg", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <div class="mb-3">
+                <label class="form-label">Name:</label>
+                @Html.TextBoxFor(m => m.name, new { @class = "form-control", placeholder = "Enter company name" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.name)</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Address:</label>
+                @Html.TextAreaFor(m => m.address, new { @class = "form-control", placeholder = "Enter address", rows = 3 })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.address)</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Phone:</label>
+                @Html.TextBoxFor(m => m.phone, new { @class = "form-control", placeholder = "Enter phone number" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.phone)</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                @Html.TextBoxFor(m => m.email, new { @class = "form-control", placeholder = "Enter email address", type = "email" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.email)</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Web Address:</label>
+                @Html.TextAreaFor(m => m.web, new { @class = "form-control", placeholder = "Enter website URL", rows = 2 })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.web)</span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Photo:</label>
+                <input type="file" class="form-control" name="file" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">User Name:</label>
+                @Html.TextBoxFor(m => m.username, new { @class = "form-control", placeholder = "Enter username" })
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Password:</label>
+                @Html.PasswordFor(m => m.pass, new { @class = "form-control", placeholder = "Enter password" })
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Confirm Password:</label>
+                @Html.PasswordFor(m => m.cpassword, new { @class = "form-control", placeholder = "Re-enter password" })
+                <span class="text-danger">@Html.ValidationMessageFor(m => m.cpassword)</span>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary px-4">Insert</button>
+                <p class="text-success mt-2">@Html.DisplayFor(m => m.msg)</p>
+            </div>
+        }
+    </div>
+</div>
